@@ -24,4 +24,16 @@ public class NotaControlador {
     public ArrayList<Nota> getListaNotas(){
         return notaDAO.getListaNotas();
     }
+
+    public Nota getNota(int id) {
+        return notaDAO.getNota(id);
+    }
+
+    public void atualizarNota(Nota nota){
+        notaDAO.updateNota(nota);
+    }
+
+    public void excluirNota(Nota nota) {
+        notaDAO.deleteNota(nota);
+    }
 }

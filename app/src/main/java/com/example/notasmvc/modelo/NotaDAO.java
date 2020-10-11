@@ -48,4 +48,33 @@ public class NotaDAO {
 
         return listaNotas;
     }
+
+    public Nota getNota(int id) {
+        String sql = "SELECT * FROM notas WHERE id="+id;
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+
+        Nota nota = new Nota(cursor.getInt(cursor.getColumnIndex("id")),
+                cursor.getString(cursor.getColumnIndex("titulo")),
+                cursor.getString(cursor.getColumnIndex("texto")));
+
+        return nota;
+    }
+
+    public void updateNota(Nota nota) {
+        int id = nota.getId();
+        String titulo = nota.getTitulo();
+        String texto = nota.getTexto();
+
+        ContentValues valores = new ContentValues();
+        valores.put("titulo", titulo);
+        valores.put("texto", texto);
+
+        database.update("notas", valores, "id="+id, null);
+    }
+
+    public void deleteNota(Nota nota) {
+        int id = nota.id;
+        database.delete("notas", "id="+id, null);
+    }
 }
