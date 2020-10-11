@@ -24,14 +24,4 @@ public class NotaControlador {
     public ArrayList<Nota> getListaNotas(){
         return notaDAO.getListaNotas();
     }
-
-    public ArrayList<String> listaTitulosNotas(){
-        ArrayList<String> resultado = new ArrayList<>();
-
-        for (Nota nota: this.getListaNotas()) {
-            resultado.add(nota.getTitulo());
-        }
-
-        return  resultado;
-    }
 }
